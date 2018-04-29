@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+    # The Mumble server
+    murmur:
+        build: ./build/murmur
+        ports:
+            - "64738:64738"
+            - "64738:64738/udp"
+        volumes:
+            - "./conf/murmur/ssl/:/ssl/:ro"
+            - "./data/murmur:/data"
+            - "/etc/localtime:/etc/localtime:ro"
+
+    # A music bot for the mumble server
+    musicbot:
+        build: ./build/musicbot
+        #ports:
+        #    - "6600:6600"
+        volumes:
+            - ./data/certs:/opt/musicbot/certs
+            - ./conf/config.yml:/opt/musicbot/config.yml:ro
+
+    # Call into a mumble server - SIP to Mumble bridge
+    mumsi:
+        build: ./build/mumsi

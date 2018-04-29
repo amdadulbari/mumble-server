@@ -1,0 +1,60 @@
+---
+config:
+  version: 2.2
+
+debug: false
+language: en
+
+main:
+  remoteui: false
+  tempdir: "/opt/musicbot/temp/"
+  ducking: false
+  automute_if_alone: false
+  stop_on_unregistered: false
+  channel_notify: 0
+  controllable: true
+  control:
+    string: "."
+    message:
+      private_only: false
+      registered_only: false
+    historysize: 20
+  display:
+    comment:
+      set: true
+  user:
+    whitelisted:
+    superuser:
+    banned:
+    bound:
+  certfolder: "/opt/musicbot/certs/"
+  fifo: "/opt/musicbot/mpd.fifo"
+  logo: "../config/logo/logo.html"
+  timer:
+    ticks:  3600
+  blacklisted_commands: "settings bind unbind reset restart blacklist ducking duckvol bitrate framesize debug gotobed wakeup follow unfollow stick unstick history automute file"
+
+mumble:
+  use_vbr: true
+  bitrate: 96000
+  host: talk.EXAMPLE-DOMAIN.TLD
+  port: 64738
+  name: jukebox
+  password: ''
+  channel: "Lounge"
+
+plugin:
+    mpd:
+      volume: 40
+      host: localhost
+      port: 6600
+      musicfolder: "/var/lib/mpd/music/"
+    youtube:
+      youtube_dl:
+        path: "youtube-dl"
+    soundcloud:
+      youtube_dl:
+        path: "youtube-dl"
+    bandcamp:
+      youtube_dl:
+        path: "youtube-dl"
